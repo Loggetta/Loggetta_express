@@ -1,25 +1,7 @@
-os:
-  - osx
-  - windows
-  - linux
 language: node_js
 node_js:
-  - 12
-install:
+  - 14
+before_script:
   - npm install
 script:
-  - electron-packager .
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then node zipper.js mac           ; fi
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then node zipper.js windows   ; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then node zipper.js linux       ; fi
-  - node zipper.js
-deploy:
-  provider: releases
-  api_key: $GITHUB_TOKEN
-  file: 
-    - "windows.zip"
-    - "mac.zip"
-    - "linux.zip"
-  skip_cleanup: true
-  on:
-    tags: true
+  - echo 'write tests :('
